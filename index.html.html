@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Swayam Bhoir Portfolio</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    html {
+      scroll-padding-top: 80px;
+      scroll-margin-top: 80px;
+      scroll-behavior: smooth;
+    }
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #181a1f;
+      color: #fff;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background-color: #181a1f;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #2c2f35;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Nav */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul li a {
+      color: #aaa;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ff6b35;
+    }
+
+    /* Menu Toggle (Mobile) */
+    .menu-toggle {
+      display: none;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+    
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-text .hello {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 0.2rem;
+      border-bottom: 3px solid #ff6b35;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    .dot {
+      color: #ff6b35;
+    }
+
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .name-highlight {
+      font-weight: 700;
+    }
+
+    .hero-text h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      font-weight: bolder;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      
+    }
+
+    .btn-primary {
+      background-color: #ff6b35;
+      color: #fff;
+      border: none;
+      
+      
+    }
+
+    .btn-primary:hover {
+      background-color: #ff4a10;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border: 2px solid #ff6b35;
+      color: #ff6b35;
+    }
+
+    .btn-secondary:hover {
+      background-color: #ff6b35;
+      color: #fff;
+      
+    }
+
+    /* Hero image with circle behind */
+    .hero-image {
+      position: relative;
+      max-width: 300px;
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .circle-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, #ff6b35 40%, transparent 70%);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    /* About Section */
+    .about {
+      margin-top: 3rem;
+    }
+
+    .about h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #ff6b35;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+
+    .about p {
+      margin-bottom: 2rem;
+      color: white ;
+      max-width: 1100px;
+      line-height: 2;
+      font-size: 25px;
+      text-align: center;
+    }
+
+    /* Projects Section */
+    .projects {
+      margin-top: 3rem;
+      min-height: 200px; /* Added so it takes up some space */
+    }
+    .projects h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      border-bottom: 3px solid #ff6b35;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+    }
+    .projects p{
+      margin-bottom: 2rem;
+      color: white ;
+      max-width: 1100px;
+      line-height: 2;
+      font-size: 25px;
+      text-align: center;
+    }
+    .projects img{
+       height: auto;
+       width: 500px;
+       border-radius: 10px;
+       margin: 0 auto;
+    }
+
+    /* --- Contact Section (Wrapper) --- */
+    .contact-section {
+        font-family: Arial, sans-serif;
+        background-color: #181a1f; /* Dark background */
+        display: flex;
+        justify-content: center; /* Centers the card horizontally */
+        align-items: center;   /* Centers the card vertically */
+        min-height: 100vh;
+        padding: 3rem 0; /* Add some padding for spacing */
+        margin: 0;
+    }
+
+    /* --- Contact Card (Box) --- */
+    .contact-card {
+        text-align: center;
+        background-color: #ff6b35;
+        width: 90%;
+        max-width: 500px;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .contact-card h2 {
+        text-align: center;
+        color: white; /* Dark text */
+        margin-top: 0;
+        margin-bottom: 25px;
+        font-size: 2rem;
+        font-weight: bold;
+        border-bottom: 3px solid white;
+      display: inline-block;
+      padding-bottom: 0.5rem;
+        
+    }
+
+    /* --- Contact Info List --- */
+    .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .contact-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    /* --- Icons (Email, Phone, etc.) --- */
+    .contact-list li .icon {
+        font-size: 1.2rem;
+        color: #007BFF; /* Orange color */
+        width: 40px; 
+        text-align: center;
+        margin-right: 15px;
+    }
+
+    /* --- Contact Text & Links --- */
+    .contact-list li .contact-text {
+        color: white; /* Dark grey text */
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        size: 50px;
+        font-weight: bold ;
+    }
+
+    .contact-list li .contact-text a {
+        color: white; /* Dark grey text */
+        text-decoration: none;
+        transition: color 0.3s ease;
+        font-weight: bold;
+    }
+
+    .contact-list li .contact-text a:hover {
+        color: #ff6b35; /* Orange hover */
+        text-decoration: underline;
+    }
+
+    /* --- Copy Button --- */
+    .copy-btn {
+        background: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        margin-left: 10px;
+        transition: 0.3s ease;
+        color: #333;
+        font-weight: bold;
+    }
+
+    .copy-btn:hover {
+        background: #d4d4d4;
+    }
+
+    /* --- Social Media Section --- */
+    .social-media {
+        text-align: center;
+        border-top: 1px solid white;
+        padding-top: 20px;
+        margin-top: 25px;
+    }
+
+    .social-media a {
+        font-size: 1.8rem;
+        color: black; /* Dark icons */
+        margin: 0 12px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    /* Social media hover colors */
+    .social-media a:hover {
+        color: #ff6b35; /* Orange hover */
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      border-top: 1px solid #2c2f35;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .hero-image {
+        order: -1; /* Moves image above text on mobile */
+        margin-bottom: 2rem;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #1f2125; /* Slightly different background */
+        position: absolute;
+        top: 60px; /* Position below header */
+        right: 5%; /* Align with container padding */
+        width: 90%;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        padding: 1rem;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+      
+      nav ul li {
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <div class="logo">Swayam Bhoir</div>
+      <nav class="nav" id="navMenu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact-section">Contact</a></li>
+        </ul>
+      </nav>
+      <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <p class="hello">Hello <span class="dot">.</span></p>
+        <h1>I'm <span class="name-highlight" style="color: #ff6b35; font-size: 50px;" >Swayam Bhoir</span></h1>
+        <h2 style="font-size: 40px;">Computer Engineer</h2>
+        <div class="btn-group">
+          <a href="#contact-section" class="btn btn-primary" style="font-size: 20px;">Let's Connect</a>
+        
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="c:\Users\Hp\Downloads\1000020723-removebg-preview.png" alt="Swayam Bhoir photo" />
+        <div class="circle-bg"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-container">
+      <h2>About me</h2>
+      <p>I'm Swayam Bhoir, a passionate computer engineering student at Fr. Conceicao Rodrigues College of Engineering, Bandra. currently in my journey from 2025 to 2029.</p>
+      <p>I am currently exploring the fundamentals of computer science. I have a strong interest in C programming and enjoy solving complex problems, including topics in linear algebra.
+      </p>
+    </div>
+  </section>
+</br>
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <p>I built a breadboard circuit using a multiplexer. The purpose of the circuit was to select one input signal from multiple inputs and send it to a single output line. I connected the input lines, selection pins, and output through jumper wires on the breadboard. The select lines were used to choose which input to pass through. This helped me understand how multiplexers work in data selection and signal routing in digital circuits.</p>
+      <a><img src="c:\Users\Hp\Downloads\WhatsApp Image 2025-10-29 at 9.37.00 PM (1).jpeg"></a>
+    </div>
+  </section>
+</br>
+  <section id="contact-section" class="contact-section">
+    <div class="contact-card">
+      
+        <h2>Contact Me</h2>
+        
+        <ul class="contact-list">
+            <li>
+                <i class="icon fas fa-phone"></i>
+                <span class="contact-text">
+                    <a href="tel:+919112920070" id="phone-number">+91 91129 20070</a>
+                    <button class="copy-btn" onclick="copyToClipboard('phone-number')">Copy</button>
+                </span>
+            </li>
+
+            <li>
+                <i class="icon fas fa-envelope"></i>
+                <span class="contact-text">
+                    <a href="mailto:bhoirswayam6@gmail.com" id="email-address">bhoirswayam6@gmail.com</a>
+                    <button class="copy-btn" onclick="copyToClipboard('email-address')">Copy</button>
+                </span>
+            </li>
+
+            <li>
+                <i class="icon fas fa-map-marker-alt"></i>
+                <span class="contact-text">
+                    <span id="address-text">Kishor nagar, Thane(E), 400601</span>
+                </span>
+            </li>
+
+            <li>
+                <i class="icon fas fa-map-location-dot"></i>
+                <span class="contact-text">
+                    <a href="https://maps.app.goo.gl/jWX2kGbJv9se7zmN9" target="_blank" rel="noopener noreferrer">
+                        View on Google Maps
+                    </a>
+                </span>
+            </li>
+        </ul>
+
+        <div class="social-media">
+            <a href="https://www.linkedin.com/in/swayam-bhoir-9b4695385?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="fab fa-linkedin" title="LinkedIn"></a>
+            <a href="https://github.com/swayam45-crypto" target="_blank" class="fab fa-github" title="GitHub"></a>
+            <a href="https://www.facebook.com/share/1AqMUMVYJA/" target="_blank" class="fab fa-facebook" title="Facebook"></a>
+            <a href="https://www.instagram.com/swayam_bhoir__45?igsh=a25tYzlscW93cjZ5" target="_blank" class="fab fa-instagram" title="Instagram"></a>
+        </div>
+    </div>
+  </section>
+  <footer>
+    <p>© 2025 Swayam Bhoir</p>
+  </footer>
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuToggle').addEventListener('click', function() {
+      const navMenu = document.getElementById('navMenu').querySelector('ul');
+      navMenu.classList.toggle('show');
+    });
+
+    // Function for the "Copy" buttons
+    function copyToClipboard(elementId) {
+      const textToCopy = document.getElementById(elementId).innerText;
+      
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        alert("Copied: " + textToCopy);
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  
+  </script>
+    <canvas id="cursorCanvas"></canvas>
+</body>
+</html>
